@@ -1,0 +1,17 @@
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\bin\Debug\net6.0\Application.deps.json
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\bin\Debug\net6.0\Application.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\bin\Debug\net6.0\Application.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\bin\Debug\net6.0\Domain.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\bin\Debug\net6.0\Persistence.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\bin\Debug\net6.0\Domain.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\bin\Debug\net6.0\Persistence.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.csproj.AssemblyReference.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\refint\Application.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\Application.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Application\obj\Debug\net6.0\ref\Application.dll

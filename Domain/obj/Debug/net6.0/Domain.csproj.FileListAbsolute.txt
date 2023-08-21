@@ -1,0 +1,12 @@
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\bin\Debug\net6.0\Domain.deps.json
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\bin\Debug\net6.0\Domain.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\bin\Debug\net6.0\Domain.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\Domain.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\refint\Domain.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\Domain.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Domain\obj\Debug\net6.0\ref\Domain.dll

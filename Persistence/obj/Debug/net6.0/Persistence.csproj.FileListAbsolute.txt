@@ -1,0 +1,15 @@
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\bin\Debug\net6.0\Persistence.deps.json
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\bin\Debug\net6.0\Persistence.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\bin\Debug\net6.0\Persistence.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\bin\Debug\net6.0\Domain.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\bin\Debug\net6.0\Domain.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.csproj.AssemblyReference.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfoInputs.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfo.cs
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.csproj.CoreCompileInputs.cache
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.csproj.CopyComplete
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\refint\Persistence.dll
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\Persistence.pdb
+D:\HDD\Rami\Uni\GJU\GP\Website\Project\ComplaintSystem\Persistence\obj\Debug\net6.0\ref\Persistence.dll
