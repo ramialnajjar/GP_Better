@@ -53,13 +53,13 @@
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
-    border: 2px solid transparent; /* This will be updated dynamically with JavaScript */
+    border: 2px solid transparent;
     box-sizing: border-box;
   }
   
   .popup-image img {
     width: 100%;
-    max-width: 100px; /* Adjust the maximum width of the image */
+    max-width: 100px;
     border: 2px solid transparent;
-    border-radius: 50%; /* To make the image circular */
+    border-radius: 50%;
   }

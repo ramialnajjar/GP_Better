@@ -291,7 +291,42 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(new RemoveComplaintFromWatchListCommand(strUserName, intComplaintId)));
         }
 
+        [HttpGet("general")] // .../api/complaints/general
+        public async Task<IActionResult> GetGeneralComplaintsList(
+            [FromQuery] GeneralComplaintsFilter filter, double userLat, double userLng)
+        {
+            string authHeader = Request.Headers["Authorization"];
+            JwtSecurityTokenHandler tokenHandler = new();
+            JwtSecurityToken jwtToken = tokenHandler.ReadJwtToken(authHeader[7..]);
+             var userLocation = new LatLng { decLat = (decimal)userLat
+                 , decLng = (decimal)userLng
+             };
+            var strUserName = jwtToken.Claims.First(c => c.Type == "username").Value;
 
+            return HandleResult(
+                await Mediator.Send(new GetGeneralComplaintsListQuery(filter, strUserName, userLocation))
+            );
+
+        }
+
+        [HttpGet("general/mapView")] // .../api/complaints/general/mapView
+        public async Task<IActionResult> GetGeneralComplaintsMapView()
+        {
+
+            return HandleResult(
+                await Mediator.Send(new GetGeneralComplaintsMapViewQuery())
+            );
+
+        }
+        [HttpGet("completed/public/mapView")] // .../api/complaints/public/mapView
+        public async Task<IActionResult> GetPublicCompletedComplaintsMapView()
+        {
+
+            return HandleResult(
+                await Mediator.Send(new GetPublicCompletedComplaintsMapViewQuery())
+            );
+
+        }
 
     }
 }

@@ -61,7 +61,6 @@ function App() {
         el.style.height = `${height}px`;
         el.style.backgroundSize = '100%';
 
-    // Create a custom popup content
     const popupContent = document.createElement("div");
     popupContent.className = "popup-container";
 
@@ -86,13 +85,11 @@ function App() {
       </div>
     `;
 
-    // Create a popup
     const popup = new Popup({ offset: 25 }).setDOMContent(popupContent);
 
-    // Add the marker element to the map with popup
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)
-      .setPopup(popup) // Set the popup
+      .setPopup(popup)
       .addTo(map.current);
   }
     }, [lng, lat, zoom, geojson]);
