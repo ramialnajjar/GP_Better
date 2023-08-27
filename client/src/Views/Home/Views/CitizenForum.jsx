@@ -9,7 +9,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // project
 import GetComplaintDetails from "../Service/GetComplaintDetails";
 import GetComplaintImage from "../Service/GetComplaintImage";
-import ScrollLock from 'react-scroll-lock-component';
+import ScrollLock from "react-scroll-lock-component";
 
 function CitizenForum() {
   const [comDet, setCompDet] = useState([]);
@@ -17,7 +17,6 @@ function CitizenForum() {
   const [pageNumber, setPageNumber] = useState(1);
   const [selectedComplaintTypes, setSelectedComplaintTypes] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState([]);
-
 
   useEffect(() => {
     const fetchComplaints = async () => {
@@ -27,15 +26,19 @@ function CitizenForum() {
           pageSize,
           selectedComplaintTypes,
           selectedStatus,
-          null 
+          null
         );
 
-        const complaintsWithData = await Promise.all(response.data.map(async (complaint) => {
-          const imageDataResponse = await GetComplaintImage(complaint.intComplaintId); 
-          const imageData = imageDataResponse.data.lstMedia[0]?.data || "-1"; 
+        const complaintsWithData = await Promise.all(
+          response.data.map(async (complaint) => {
+            const imageDataResponse = await GetComplaintImage(
+              complaint.intComplaintId
+            );
+            const imageData = imageDataResponse.data.lstMedia[0]?.data || "-1";
 
-          return { ...complaint, imageData };
-        }));
+            return { ...complaint, imageData };
+          })
+        );
 
         setCompDet(complaintsWithData);
       } catch (error) {
@@ -45,8 +48,6 @@ function CitizenForum() {
 
     fetchComplaints();
   }, [pageNumber, pageSize, selectedComplaintTypes, selectedStatus]);
-
-
 
   const handlePageChange = (direction) => {
     if (direction === "prev" && pageNumber > 1) {
@@ -64,35 +65,38 @@ function CitizenForum() {
     setSelectedStatus(selectedStatusId);
   };
 
-
   return (
     <div>
-
       <Grid container spacing={2} className="app-container">
- 
         <Grid item xs={12} md={8} className="main-content">
           <FlexBetween>
             <ComplaintPost data={comDet} />
           </FlexBetween>
 
-          <Box display="flex" justifyContent="center" mt={2} >
-            <IconButton onClick={() => handlePageChange("prev")} disabled={pageNumber === 1}>
+          <Box display="flex" justifyContent="center" mt={2}>
+            <IconButton
+              onClick={() => handlePageChange("prev")}
+              disabled={pageNumber === 1}
+            >
               <ArrowForwardIcon />
             </IconButton>
             <IconButton
               onClick={() => handlePageChange("next")}
               disabled={comDet.length < pageSize}
             >
-
               <ArrowBackIcon />
             </IconButton>
-
           </Box>
         </Grid>
         {/* <ScrollLock> */}
         <Grid item xs={12} md={4} className="custom-filter-container">
           {/* Pass the handleComplaintTypesChange function as a prop */}
-          <CustomFilter onComplaintTypesChange={handleComplaintTypesChange} onComplaintStatusChange={handleComplaintStatusChange}  />
+          <CustomFilter
+            onComplaintTypesChange={handleComplaintTypesChange}
+            onComplaintStatusChange={handleComplaintStatusChange}
+            data={comDet}
+            
+          />
         </Grid>
         {/* </ScrollLock> */}
       </Grid>
