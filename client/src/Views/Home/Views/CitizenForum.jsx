@@ -32,7 +32,7 @@ function CitizenForum() {
 
         const complaintsWithData = await Promise.all(response.data.map(async (complaint) => {
           const imageDataResponse = await GetComplaintImage(complaint.intComplaintId); 
-          const imageData = imageDataResponse.data.lstMedia[0]?.data || ""; 
+          const imageData = imageDataResponse.data.lstMedia[0]?.data || "-1"; 
 
           return { ...complaint, imageData };
         }));
@@ -92,7 +92,7 @@ function CitizenForum() {
         {/* <ScrollLock> */}
         <Grid item xs={12} md={4} className="custom-filter-container">
           {/* Pass the handleComplaintTypesChange function as a prop */}
-          <CustomFilter onComplaintTypesChange={handleComplaintTypesChange} onComplaintStatusChange={handleComplaintStatusChange} />
+          <CustomFilter onComplaintTypesChange={handleComplaintTypesChange} onComplaintStatusChange={handleComplaintStatusChange}  />
         </Grid>
         {/* </ScrollLock> */}
       </Grid>

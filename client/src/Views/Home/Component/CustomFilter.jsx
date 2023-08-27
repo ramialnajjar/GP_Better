@@ -10,9 +10,17 @@ import "../Style/style.css"
 import "./ComplaintMap.css"
 
 import mapboxgl, { Marker, Popup } from "mapbox-gl";
-import GetGeneralComplaintMarker from "../Service/GetGeneralComplaintsMap";
+// import GetGeneralComplaintMarker from "../Service/GetGeneralComplaintsMap";
+import GetPublicComplaintMarker from "../Service/GetPublicComplaintsMap";
 
-const CustomFilter = ({ onComplaintTypesChange, onComplaintStatusChange }) => {
+// import { GetPublicComplaintMarker } from "../Service/GetPublicComplaintsMap";
+
+
+
+
+
+
+const CustomFilter = ({ onComplaintTypesChange, onComplaintStatusChange, markerInfoList }) => {
 
     mapboxgl.accessToken =
         "pk.eyJ1IjoiYWdyaWRiIiwiYSI6ImNsbDN5dXgxNTAxOTAza2xhdnVmcnRzbGEifQ.3cM2WO5ubiAjuWbpXi9woQ";
@@ -24,14 +32,11 @@ const CustomFilter = ({ onComplaintTypesChange, onComplaintStatusChange }) => {
     const [zoom, setZoom] = useState(8);
 
     const [markerDetails, setMarkerDetails] = useState([]);
-    const showMarkerDetails = async () => {
-        const response = await GetGeneralComplaintMarker()
-        setMarkerDetails(response.data)
-    }
+  
 
 
     const geojson = {
-        'type': 'FeatureCollection',
+        
         'features': [
             {
                 'type': 'Feature',
@@ -59,6 +64,8 @@ const CustomFilter = ({ onComplaintTypesChange, onComplaintStatusChange }) => {
     };
 
     useEffect(() => {
+
+
         if (map.current) return; // initialize map only once
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -116,6 +123,10 @@ const CustomFilter = ({ onComplaintTypesChange, onComplaintStatusChange }) => {
 
     useEffect(() => {
         // Fetch complaint types from the API and set them to state
+        const showMarkerDetails = async () => {
+            const response = await GetPublicComplaintMarker()
+            setMarkerDetails(response.data)
+        }
         const fetchComplaintTypes = async () => {
             try {
                 const response = await GetComplaintTypes();
@@ -126,7 +137,8 @@ const CustomFilter = ({ onComplaintTypesChange, onComplaintStatusChange }) => {
         };
 
         fetchComplaintTypes();
-    }, [lng, lat, zoom, geojson]);
+        showMarkerDetails();
+    }, []);
 
 
 
