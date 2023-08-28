@@ -3,10 +3,10 @@ import { Typography, Box, Grid, IconButton } from "@mui/material";
 import ComplaintPost from "../Component/ComplaintPost";
 import { FlexBetween } from "../../../Common/Components/FlexBetween";
 import CustomFilter from "../Component/CustomFilter";
-// icons
+
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-// project
+
 import GetComplaintDetails from "../Service/GetComplaintDetails";
 import GetComplaintImage from "../Service/GetComplaintImage";
 import ScrollLock from "react-scroll-lock-component";
@@ -95,7 +95,6 @@ function CitizenForum() {
             onComplaintTypesChange={handleComplaintTypesChange}
             onComplaintStatusChange={handleComplaintStatusChange}
             data={comDet}
-            
           />
         </Grid>
         {/* </ScrollLock> */}

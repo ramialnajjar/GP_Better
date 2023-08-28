@@ -9,7 +9,6 @@
       "webRoot": "${workspaceFolder}"
     },
     {
-      "type": "edge",
       "request": "launch",
       "name": "localhost (Edge)",
       "url": "http://localhost:3000",
