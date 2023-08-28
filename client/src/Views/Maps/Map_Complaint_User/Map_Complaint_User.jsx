@@ -14,31 +14,31 @@ function App() {
   const [lng, setLng] = useState(35.910861);
   const [zoom, setZoom] = useState(11);
   const geojson = {
-    'type': 'FeatureCollection',
-    'features': [
+    type: "FeatureCollection",
+    features: [
       {
-        'type': 'Feature',
-        'properties': {
-          'message': 'Foo',
-          'iconSize': [60, 60]
+        type: "Feature",
+        properties: {
+          message: "Foo",
+          iconSize: [60, 60],
         },
-        'geometry': {
-          'type': 'Point',
-          'coordinates': [lng, lat]
-        }
+        geometry: {
+          type: "Point",
+          coordinates: [lng, lat],
+        },
       },
       {
-        'type': 'Feature',
-        'properties': {
-          'message': 'Bar',
-          'iconSize': [50, 50]
+        type: "Feature",
+        properties: {
+          message: "Bar",
+          iconSize: [50, 50],
         },
-        'geometry': {
-          'type': 'Point',
-          'coordinates': [35.875612, 31.957211]
-        }
+        geometry: {
+          type: "Point",
+          coordinates: [35.875612, 31.957211],
+        },
       },
-    ]
+    ],
   };
 
   useEffect(() => {
@@ -50,23 +50,22 @@ function App() {
       zoom: zoom,
     });
 
-
     for (const marker of geojson.features) {
-      const el = document.createElement('div');
+      const el = document.createElement("div");
       const width = marker.properties.iconSize[0];
       const height = marker.properties.iconSize[1];
-      el.className = 'marker';
+      el.className = "marker";
       el.style.backgroundImage = `url(https://placekitten.com/g/${width}/${height}/)`;
       el.style.width = `${width}px`;
       el.style.height = `${height}px`;
-      el.style.backgroundSize = '100%';
+      el.style.backgroundSize = "100%";
 
       // Create a custom popup content
       const popupContent = document.createElement("div");
       popupContent.className = "popup-container";
 
       popupContent.innerHTML = `
-    <div class="popup-image" style="border-color: ${(marker.properties.message)};">
+    <div class="popup-image" style="border-color: ${marker.properties.message};">
     <img src="URL_OF_YOUR_IMAGE" alt="Marker Image" />
   </div>
   <div class="popup-divider"></div>
@@ -105,7 +104,10 @@ function App() {
       height="95%"
       width="100%"
     >
-      <div ref={mapContainer} style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+      <div
+        ref={mapContainer}
+        style={{ height: "100%", width: "100%", borderRadius: "5px" }}
+      />
     </Box>
   );
 }

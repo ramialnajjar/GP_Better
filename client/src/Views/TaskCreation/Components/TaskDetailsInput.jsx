@@ -23,9 +23,30 @@ import TaskCreationContext from "../Context/TaskCreationContext";
 // schemas
 import { TaskSchema } from "../Utils/Schemas";
 
+
+const testPhotos = [
+  {
+    media: "https://picsum.photos/id/10/800",
+    title: "Test 1",
+  },
+  {
+    media: "https://picsum.photos/id/13/800",
+    title: "Test 2",
+  },
+  {
+    media: "https://picsum.photos/id/14/800",
+    title: "Test 3",
+  },
+];
+
+
+
+
 const TaskDetailsInput = ({ photos, complaint, NextStep }) => {
   const [taskTypes, setTaskTypes] = useState([]);
-  const { task, setTask } = useContext(TaskCreationContext);
+  const { task, setTask, setStartDate, setDueDate } = useContext(TaskCreationContext);
+  const [taskPhotos, setTaskPhotos] = useState(testPhotos);
+
 
   useEffect(() => {
     const GetTaskTypes = async () => {
@@ -47,7 +68,7 @@ const TaskDetailsInput = ({ photos, complaint, NextStep }) => {
   return (
     <Stack spacing={2}>
       <MediaGallery
-        items={photos}
+        items={testPhotos}
         height="25rem"
         width="auto"
         borderRadius="1rem"
@@ -63,6 +84,9 @@ const TaskDetailsInput = ({ photos, complaint, NextStep }) => {
               taskType: data.taskType,
               comment: data.comment,
             });
+            setStartDate(dayjs(data.startDate)); // Update startDate in context
+
+            setDueDate(dayjs(data.dueDate)); // Update dueDate in context
             NextStep();
           })}
         >
@@ -81,8 +105,8 @@ const TaskDetailsInput = ({ photos, complaint, NextStep }) => {
               </Typography>
             </FlexBetween>
             <FlexBetween>
-              <Typography variant="h5" color={theme.palette.grey[500]}>
-                Start Date:
+              <Typography variant="h5" color={theme.palette.grey[500]} sx={{ fontFamily: 'Droid Arabic Naskh, sans-serif' }}>
+                تاريخ الانشاء:
               </Typography>
               <FormDateTimePicker
                 name="startDate"
@@ -91,12 +115,13 @@ const TaskDetailsInput = ({ photos, complaint, NextStep }) => {
               />
             </FlexBetween>
             <FlexBetween>
-              <Typography variant="h5" color={theme.palette.grey[500]}>
-                Due Date:
+              <Typography variant="h5" color={theme.palette.grey[500]} sx={{ fontFamily: 'Droid Arabic Naskh, sans-serif' }}>
+                تاريخ الانتهاء:
               </Typography>
               <FormDateTimePicker
                 name="dueDate"
                 minDateTime={methods.watch("startDate") || dayjs()}
+                onChange={(newDate) => setDueDate(newDate)}
               />
             </FlexBetween>
             <FormAutocompleteBox
@@ -108,9 +133,11 @@ const TaskDetailsInput = ({ photos, complaint, NextStep }) => {
             <Button
               type="submit"
               variant="contained"
-              sx={{ borderRadius: "1rem" }}
+              sx={{ borderRadius: "1rem", fontFamily: 'Droid Arabic Naskh, sans-serif' }}
+              onChange={(newDate) => setDueDate(newDate)}
+
             >
-              Next
+              التالي
             </Button>
           </Stack>
         </form>

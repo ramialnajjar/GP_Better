@@ -65,7 +65,7 @@ const AdminViewComplaints = () => {
 
   return (
     <div>
-      <Typography variant="h1">View Complaints</Typography>
+      <Typography variant="h1" sx={{fontFamily: 'Droid Arabic Naskh, sans-serif' }}>عرض المشاكل</Typography>
       <ComplaintsDataGrid
         data={FormatDate()}
         AddComplaint={setComplaintById}
@@ -93,6 +93,7 @@ const AdminViewComplaints = () => {
             <TaskCreation
               photos={complaint.lstMedia}
               complaint={complaint}
+              complaints={complaints} //this for bring data
               CloseDrawer={() => setDrawerOpen(false)}
             />
           ) : (

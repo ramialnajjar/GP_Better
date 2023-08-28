@@ -3,13 +3,12 @@ import { Typography, Box, Grid, IconButton } from "@mui/material";
 import ComplaintPost from "../Component/ComplaintPost";
 import { FlexBetween } from "../../../Common/Components/FlexBetween";
 import CustomFilter from "../Component/CustomFilter";
-
+// icons
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+// project
 import GetComplaintDetails from "../Service/GetComplaintDetails";
 import GetComplaintImage from "../Service/GetComplaintImage";
-import ScrollLock from "react-scroll-lock-component";
 
 function CitizenForum() {
   const [comDet, setCompDet] = useState([]);
@@ -17,6 +16,9 @@ function CitizenForum() {
   const [pageNumber, setPageNumber] = useState(1);
   const [selectedComplaintTypes, setSelectedComplaintTypes] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState([]);
+  const [sliderValue, setSliderValue] = useState(30);
+  const userLat = 38.85;
+  const userLng = 35.01;
 
   useEffect(() => {
     const fetchComplaints = async () => {
@@ -24,9 +26,11 @@ function CitizenForum() {
         const response = await GetComplaintDetails(
           pageNumber,
           pageSize,
+          userLat,
+          userLng,
           selectedComplaintTypes,
           selectedStatus,
-          null
+          sliderValue
         );
 
         const complaintsWithData = await Promise.all(
@@ -34,7 +38,7 @@ function CitizenForum() {
             const imageDataResponse = await GetComplaintImage(
               complaint.intComplaintId
             );
-            const imageData = imageDataResponse.data.lstMedia[0]?.data || "-1";
+            const imageData = imageDataResponse.data.lstMedia[0]?.data || "";
 
             return { ...complaint, imageData };
           })
@@ -47,7 +51,19 @@ function CitizenForum() {
     };
 
     fetchComplaints();
-  }, [pageNumber, pageSize, selectedComplaintTypes, selectedStatus]);
+  }, [
+    pageNumber,
+    pageSize,
+    selectedComplaintTypes,
+    selectedStatus,
+    userLat,
+    userLng,
+    sliderValue,
+  ]);
+
+  const handleSliderValueChange = (sliderValue) => {
+    console.log("Slider value:", sliderValue);
+  };
 
   const handlePageChange = (direction) => {
     if (direction === "prev" && pageNumber > 1) {
@@ -88,18 +104,17 @@ function CitizenForum() {
             </IconButton>
           </Box>
         </Grid>
-        {/* <ScrollLock item xs={12} md={4} className="custom-filter-container"> */}
+
         <Grid item xs={12} md={4} className="custom-filter-container">
           {/* Pass the handleComplaintTypesChange function as a prop */}
           <CustomFilter
+            data={comDet}
             onComplaintTypesChange={handleComplaintTypesChange}
             onComplaintStatusChange={handleComplaintStatusChange}
-            data={comDet}
+            onSliderValueChange={handleSliderValueChange} // Pass the new function here
           />
         </Grid>
-        {/* </ScrollLock> */}
       </Grid>
-
       <br />
       <br />
     </div>

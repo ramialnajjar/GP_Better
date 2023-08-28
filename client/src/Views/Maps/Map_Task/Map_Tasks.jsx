@@ -3,7 +3,6 @@ import mapboxgl, { Marker, Popup } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Box } from "@mui/material";
 import "./Map_Tasks.css";
-import { GetTasksApi } from "../../Tasks/Service/GetTasksApi";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWdyaWRiIiwiYSI6ImNsbDN5dXgxNTAxOTAza2xhdnVmcnRzbGEifQ.3cM2WO5ubiAjuWbpXi9woQ";
@@ -14,19 +13,6 @@ function App() {
   const [lat, setLat] = useState(31.952912);
   const [lng, setLng] = useState(35.910861);
   const [zoom, setZoom] = useState(11);
-  const [tasks, setTasks] = useState([]);
-  const [pageSize, setPageSize] = useState([15]);
-  const [pagenumber, setPageNumber] = useState([1]);
-
-  useEffect(() => {
-    const setTasksView = async () => {
-      const response = await GetTasksApi(pageSize, pagenumber, [], []);
-      console.log(response);
-      setTasks(response);
-    };
-    setTasksView();
-    // fetchData();
-  }, [pageSize, pagenumber]);
   const geojson = {
     type: "FeatureCollection",
     features: [
@@ -54,52 +40,62 @@ function App() {
       },
     ],
   };
-  useEffect(() => {
-    if (map.current) return; // Prevent map from being initialized multiple times
 
+  useEffect(() => {
+    if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [lng, lat],
       zoom: zoom,
     });
-  }, []);
 
-  useEffect(() => {
-    if (!map.current || !tasks) return;
-
-    // Dynamically create markers based on comDet
-
-    tasks.map((complaint) => {
+    for (const marker of geojson.features) {
       const el = document.createElement("div");
+      const width = marker.properties.iconSize[0];
+      const height = marker.properties.iconSize[1];
       el.className = "marker";
-      el.style.backgroundImage = `url('YOUR_IMAGE_URL')`; // Replace with a valid URL or logic
-      el.style.width = "50px";
-      el.style.height = "50px";
+      el.style.backgroundImage = `url(https://placekitten.com/g/${width}/${height}/)`;
+      el.style.width = `${width}px`;
+      el.style.height = `${height}px`;
+      el.style.backgroundSize = "100%";
 
+      // Create a custom popup content
       const popupContent = document.createElement("div");
       popupContent.className = "popup-container";
-      popupContent.innerHTML = `
-          <div class="popup-content">
-            <div class="popup-label">رقم البلاغ</div>
-            <div class="popup-value">${complaint.intComplaintId}</div>
-            <div class="popup-label">حالة البلاغ</div>
-            <div class="popup-value">${complaint.strStatus}</div>
-            <div class="popup-label">المستخدم</div>
-            <div class="popup-value">${complaint.strUserName}</div>
-            <div class="popup-label">تاريخ الأضافة</div>
-            <div class="popup-value">${complaint.dtmDateCreated}</div>
-          </div>
-        `;
 
+      popupContent.innerHTML = `
+    <div class="popup-image" style="border-color: ${marker.properties.message};">
+    <img src="URL_OF_YOUR_IMAGE" alt="Marker Image" />
+  </div>
+  <div class="popup-divider"></div>
+  <div class="popup-content">
+    <!-- ... rest of the content -->
+  </div>
+      <div class="popup-divider"></div>
+      <div class="popup-content">
+        <div class="popup-label">رقم البلاغ</div>
+        <div class="popup-value">Value 1</div>
+        <div class="popup-label">حالة البلاغ</div>
+        <div class="popup-value">Value 2</div>
+        <div class="popup-label">المستخدم</div>
+        <div class="popup-value">Value 3</div>
+        <div class="popup-label">تاريخ الأضافة</div>
+        <div class="popup-value">Value 4</div>
+      </div>
+    `;
+
+      // Create a popup
       const popup = new Popup({ offset: 25 }).setDOMContent(popupContent);
 
+      // Add the marker element to the map with popup
       new mapboxgl.Marker(el)
-        .setLngLat([complaint.latLng.decLng, complaint.latLng.decLat])
-        .setPopup(popup)
+        .setLngLat(marker.geometry.coordinates)
+        .setPopup(popup) // Set the popup
         .addTo(map.current);
-    });
-  }, [tasks]);
+    }
+  }, [lng, lat, zoom, geojson]);
+
   return (
     <Box
       display="flex"

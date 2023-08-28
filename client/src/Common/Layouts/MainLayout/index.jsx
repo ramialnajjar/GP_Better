@@ -34,7 +34,7 @@ const MainContent = styled("main")(({ theme, isSidebarOpen }) => ({
   marginRight: isSidebarOpen ? "290px" : "0",
   marginLeft: isSidebarOpen ? "0" : "10",
   transition: "margin 0.3s ease",
-  width: isSidebarOpen ? "calc(100vw - 270px)" : "100%", 
+  width: isSidebarOpen ? "calc(100vw - 270px)" : "100%",
   flexDirection: "row-reverse",
 }));
 
@@ -71,7 +71,13 @@ function Layout() {
       <MainContent isSidebarOpen={isSidebarOpen}>
         <IconButton
           onClick={handleSidebarToggle}
-          style={{ zIndex: 1, position: "absolute", right: isSidebarOpen ? "305px" : "25px", background:'#fff', top:'15px' }}
+          style={{
+            zIndex: 1,
+            position: "absolute",
+            right: isSidebarOpen ? "305px" : "25px",
+            background: "#fff",
+            top: "15px",
+          }}
         >
           {isSidebarOpen ? <Menu /> : <ChevronLeft />}
         </IconButton>
@@ -85,8 +91,6 @@ function Layout() {
 }
 
 export default Layout;
-
-
 
 //LTR
 /*

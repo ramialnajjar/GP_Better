@@ -58,7 +58,8 @@ const CustomFilter = ({
       const el = document.createElement("div");
       el.className = "marker";
       const imageData = complaint.imageData;
-      el.style.backgroundImage = `url(data:image/png;base64,${imageData})`;
+      
+
       el.style.width = "50px";
       el.style.height = "50px";
       // <img src="url(data:image/png;base64,${imageData})">
@@ -86,8 +87,6 @@ const CustomFilter = ({
         .addTo(map.current);
     });
   }, [data]);
-
- 
 
   const [complaintTypes, setComplaintTypes] = useState([]);
   const [selectedComplaintTypes, setSelectedComplaintTypes] = useState([]);
