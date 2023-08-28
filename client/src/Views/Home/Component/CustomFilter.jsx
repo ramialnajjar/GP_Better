@@ -57,9 +57,11 @@ const CustomFilter = ({
     data.map((complaint) => {
       const el = document.createElement("div");
       el.className = "marker";
-      el.style.backgroundImage = `url('YOUR_IMAGE_URL')`; // Replace with a valid URL or logic
+      const imageData = complaint.imageData;
+      el.style.backgroundImage = `url(data:image/png;base64,${imageData})`;
       el.style.width = "50px";
       el.style.height = "50px";
+      // <img src="url(data:image/png;base64,${imageData})">
 
       const popupContent = document.createElement("div");
       popupContent.className = "popup-container";

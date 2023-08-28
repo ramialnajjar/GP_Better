@@ -88,7 +88,7 @@ function CitizenForum() {
             </IconButton>
           </Box>
         </Grid>
-        {/* <ScrollLock> */}
+        {/* <ScrollLock item xs={12} md={4} className="custom-filter-container"> */}
         <Grid item xs={12} md={4} className="custom-filter-container">
           {/* Pass the handleComplaintTypesChange function as a prop */}
           <CustomFilter

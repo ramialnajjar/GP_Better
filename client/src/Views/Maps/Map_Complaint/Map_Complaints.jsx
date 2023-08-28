@@ -14,7 +14,7 @@ function App() {
   const [lat, setLat] = useState(31.952912);
   const [lng, setLng] = useState(35.910861);
   const [zoom, setZoom] = useState(11);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
   const pageSize = 20;
   const [complaints, setComplaints] = useState([]);
 
@@ -45,7 +45,8 @@ function App() {
     complaints.map((complaint) => {
       const el = document.createElement("div");
       el.className = "marker";
-      el.style.backgroundImage = "`url('YOUR_IMAGE_URL')`"; // Replace with a valid URL or logic
+      const imageData = complaint.imageData;
+      el.style.backgroundImage = `url(data:image/jpg;base64,${imageData})`;
       el.style.width = "50px";
       el.style.height = "50px";
 
@@ -53,6 +54,9 @@ function App() {
       popupContent.className = "popup-container";
       popupContent.innerHTML = `
           <div class="popup-content">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeZfr9h55Tt72GHmMpzNzMkARCArTXAjY2sbjoVcJoWA&s" 
+          alt="Image Description" 
+          style="width:100%; max-width:100px; margin:none;">
             <div class="popup-label">رقم البلاغ</div>
             <div class="popup-value">${complaint.intComplaintId}</div>
             <div class="popup-label">حالة البلاغ</div>

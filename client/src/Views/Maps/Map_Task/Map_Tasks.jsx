@@ -3,7 +3,7 @@ import mapboxgl, { Marker, Popup } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Box } from "@mui/material";
 import "./Map_Tasks.css";
-import { GetTasksApi } from "C:\\Users\\AMASI FOR COMPUTER\\Documents\\FlutterDev\\projects\\GP_Better\\client\\src\\Views\\Tasks\\Service\\GetTasksApi.js";
+import { GetTasksApi } from "../../Tasks/Service/GetTasksApi";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWdyaWRiIiwiYSI6ImNsbDN5dXgxNTAxOTAza2xhdnVmcnRzbGEifQ.3cM2WO5ubiAjuWbpXi9woQ";
